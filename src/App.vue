@@ -1,26 +1,33 @@
 <template>
   <div id="app">
-    <div class="container">
-      <div class="searchContainer">
-        <input type="text" v-model="searchTitle" />
-        <button @click="search">Search</button>
+    <div class="container mt-2">
+      <div class="searchContainer d-flex">
+        <input
+          class=""
+          type="text"
+          placeholder="Movie title"
+          v-model="searchTitle"
+        />
+        <button class="btn btn-primary btn-sm ms-2" @click="search">
+          Search
+        </button>
       </div>
 
       <div class="movieContainer" v-for="movie in movies" :key="movie.id">
         <p>
-          {{ movie.title }}
+          Title: <span>{{ movie.title }}</span>
         </p>
 
         <p>
-          {{ movie.original_title }}
+          Original title: <span>{{ movie.original_title }}</span>
         </p>
 
         <p>
-          {{ movie.original_language }}
+          Language: <span>{{ movie.original_language }}</span>
         </p>
 
         <p>
-          {{ movie.vote_average }}
+          Vote: <span>{{ movie.vote_average }}</span>
         </p>
       </div>
     </div>
@@ -64,4 +71,19 @@ export default {
 
 <style lang="scss">
 @import "~bootstrap/scss/bootstrap.scss";
+
+.movieContainer {
+  margin-top: 20px;
+  border: 2px solid black;
+  padding: 10px;
+
+  p {
+    line-height: 1.6;
+    margin: 0px;
+    span {
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+  }
+}
 </style>
