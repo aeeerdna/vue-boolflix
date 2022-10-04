@@ -1,8 +1,28 @@
 <template>
   <div id="app">
     <div class="container">
-      <input type="text" v-model="searchTitle" />
-      <button @click="search">Search</button>
+      <div class="searchContainer">
+        <input type="text" v-model="searchTitle" />
+        <button @click="search">Search</button>
+      </div>
+
+      <div class="movieContainer" v-for="movie in movies" :key="movie.id">
+        <p>
+          {{ movie.title }}
+        </p>
+
+        <p>
+          {{ movie.original_title }}
+        </p>
+
+        <p>
+          {{ movie.original_language }}
+        </p>
+
+        <p>
+          {{ movie.vote_average }}
+        </p>
+      </div>
     </div>
   </div>
 </template>
@@ -15,6 +35,7 @@ export default {
   data() {
     return {
       searchTitle: "",
+      movies: [],
     };
   },
 
@@ -29,6 +50,9 @@ export default {
         )
         .then((response) => {
           console.log(response);
+          if (response.status === 200) {
+            this.movies = response.data.results;
+          }
         })
         .catch((error) => {
           console.log(error.message);
