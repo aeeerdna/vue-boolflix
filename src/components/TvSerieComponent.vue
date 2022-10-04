@@ -1,21 +1,21 @@
 <template>
-  <div class="movieContainer">
+  <div class="tvSerieContainer">
     <p class="d-flex">
-      Title:<span class="ms-2"> {{ movie.title }}</span>
+      Title:<span class="ms-2"> {{ tvSerie.name }}</span>
     </p>
 
     <p class="d-flex">
-      Original title:<span class="ms-2"> {{ movie.original_title }}</span>
+      Original title:<span class="ms-2"> {{ tvSerie.original_name }}</span>
     </p>
 
     <p class="d-flex">
       Language:
-      <FlagComponent :language="movie.original_language" />
-      <span class="ms-2"> {{ movie.original_language }}</span>
+      <FlagComponent :language="tvSerie.original_language" />
+      <span class="ms-2"> {{ tvSerie.original_language }}</span>
     </p>
 
     <p class="d-flex">
-      Vote:<span class="ms-2"> {{ movie.vote_average }}</span>
+      Vote:<span class="ms-2"> {{ tvSerie.vote_average }}</span>
     </p>
   </div>
 </template>
@@ -24,9 +24,9 @@
 import FlagComponent from "@/components/FlagComponent.vue";
 
 export default {
-  name: "MovieComponent",
+  name: "TvSerieComponent",
   props: {
-    movie: Object,
+    tvSerie: Object,
   },
   components: {
     FlagComponent,
@@ -35,11 +35,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.movieContainer {
+.tvSerieContainer {
   margin-top: 20px;
   border: 2px solid black;
   padding: 10px;
-  background-color: lightcoral;
+  background-color: lightgreen;
 
   p {
     line-height: 1.6;

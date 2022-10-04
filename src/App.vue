@@ -13,9 +13,17 @@
       </button>
     </div>
 
-    <!-- Container film -->
+    <!-- Container film e serie tv-->
     <div>
+      <h3>Movies</h3>
       <MovieComponent v-for="movie in movies" :key="movie.id" :movie="movie" />
+
+      <h3>Tv Series</h3>
+      <TvSerieComponent
+        v-for="tvSerie in tvSeries"
+        :key="tvSerie.id"
+        :tvSerie="tvSerie"
+      />
     </div>
   </div>
 </template>
@@ -24,6 +32,7 @@
 import axios from "axios";
 import { apiKey } from "@/env.js";
 import MovieComponent from "@/components/MovieComponent.vue";
+import TvSerieComponent from "@/components/TvSerieComponent.vue";
 
 export default {
   name: "App",
@@ -73,6 +82,7 @@ export default {
 
   components: {
     MovieComponent,
+    TvSerieComponent,
   },
 };
 </script>
