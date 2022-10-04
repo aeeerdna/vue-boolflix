@@ -1,5 +1,10 @@
 <template>
-  <div id="app">ciao</div>
+  <div id="app">
+    <div class="container">
+      <input type="text" v-model="searchTitle" />
+      <button @click="search">Search</button>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -7,10 +12,16 @@ import axios from "axios";
 import { apiKey } from "@/env.js";
 export default {
   name: "App",
-  mounted() {
-    this.queryApi("8 mile");
+  data() {
+    return {
+      searchTitle: "",
+    };
   },
+
   methods: {
+    search() {
+      this.queryApi(this.searchTitle);
+    },
     queryApi(searchTitle) {
       axios
         .get(
