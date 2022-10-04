@@ -15,10 +15,10 @@
 
     <!-- Container film e serie tv-->
     <div>
-      <h3>Movies</h3>
+      <h3 class="mt-5 fs-4 text-uppercase">Movies</h3>
       <MovieComponent v-for="movie in movies" :key="movie.id" :movie="movie" />
 
-      <h3>Tv Series</h3>
+      <h3 class="mt-5 fs-4 text-uppercase">Tv Series</h3>
       <TvSerieComponent
         v-for="tvSerie in tvSeries"
         :key="tvSerie.id"

@@ -1,4 +1,5 @@
 <template>
+  <!-- bandiera lingua -->
   <img
     class="languageFlag ms-2"
     :src="getFlag(language)"

@@ -1,21 +1,29 @@
 <template>
+  <!-- container film -->
   <div class="movieContainer">
+    <!-- titolo film -->
     <p class="d-flex">
-      Title:<span class="ms-2"> {{ movie.title }}</span>
+      Title:<span class="ms-2 text-uppercase fw-bold"> {{ movie.title }}</span>
     </p>
 
     <p class="d-flex">
-      Original title:<span class="ms-2"> {{ movie.original_title }}</span>
+      Original title:<span class="ms-2 text-uppercase fw-bold">
+        {{ movie.original_title }}</span
+      >
     </p>
 
     <p class="d-flex">
       Language:
       <FlagComponent :language="movie.original_language" />
-      <span class="ms-2"> {{ movie.original_language }}</span>
+      <span class="ms-2 text-uppercase fw-bold">
+        {{ movie.original_language }}</span
+      >
     </p>
 
     <p class="d-flex">
-      Vote:<span class="ms-2"> {{ movie.vote_average }}</span>
+      Vote:<span class="ms-2 text-uppercase fw-bold">
+        {{ movie.vote_average }}</span
+      >
     </p>
   </div>
 </template>
@@ -44,10 +52,6 @@ export default {
   p {
     line-height: 1.6;
     margin: 0px;
-    span {
-      text-transform: uppercase;
-      font-weight: bold;
-    }
   }
 }
 </style>
