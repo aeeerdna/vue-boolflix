@@ -28,6 +28,7 @@
             class="languageFlag ms-2"
             :src="getFlag(movie.original_language)"
             :alt="movie.original_language"
+            @error="fixImageError($event)"
           />
           <span class="ms-2"> {{ movie.original_language }}</span>
         </p>
@@ -74,7 +75,33 @@ export default {
     },
 
     getFlag(language) {
+      switch (language) {
+        case "en": {
+          language = "gb";
+          break;
+        }
+
+        case "ja": {
+          language = "jp";
+          break;
+        }
+
+        case "da": {
+          language = "dk";
+          break;
+        }
+
+        case "cs": {
+          language = "cz";
+          break;
+        }
+      }
+
       return `https://flagicons.lipis.dev/flags/1x1/${language}.svg`;
+    },
+
+    fixImageError(event) {
+      event.target.src = `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuboE0D1KX9nCaXspFfaDmec4xbX_P2SBXYw&usqp=CAU`;
     },
   },
 };
@@ -87,6 +114,7 @@ export default {
   margin-top: 20px;
   border: 2px solid black;
   padding: 10px;
+  background-color: lightcoral;
 
   p {
     line-height: 1.6;
