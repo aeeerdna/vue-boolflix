@@ -14,20 +14,26 @@
       </div>
 
       <div class="movieContainer" v-for="movie in movies" :key="movie.id">
-        <p>
-          Title: <span>{{ movie.title }}</span>
+        <p class="d-flex">
+          Title:<span class="ms-2"> {{ movie.title }}</span>
         </p>
 
-        <p>
-          Original title: <span>{{ movie.original_title }}</span>
+        <p class="d-flex">
+          Original title:<span class="ms-2"> {{ movie.original_title }}</span>
         </p>
 
-        <p>
-          Language: <span>{{ movie.original_language }}</span>
+        <p class="d-flex">
+          Language:
+          <img
+            class="languageFlag ms-2"
+            :src="getFlag(movie.original_language)"
+            :alt="movie.original_language"
+          />
+          <span class="ms-2"> {{ movie.original_language }}</span>
         </p>
 
-        <p>
-          Vote: <span>{{ movie.vote_average }}</span>
+        <p class="d-flex">
+          Vote:<span class="ms-2"> {{ movie.vote_average }}</span>
         </p>
       </div>
     </div>
@@ -50,6 +56,7 @@ export default {
     search() {
       this.queryApi(this.searchTitle);
     },
+
     queryApi(searchTitle) {
       axios
         .get(
@@ -64,6 +71,10 @@ export default {
         .catch((error) => {
           console.log(error.message);
         });
+    },
+
+    getFlag(language) {
+      return `https://flagicons.lipis.dev/flags/1x1/${language}.svg`;
     },
   },
 };
@@ -83,6 +94,9 @@ export default {
     span {
       text-transform: uppercase;
       font-weight: bold;
+    }
+    .languageFlag {
+      max-width: 15px;
     }
   }
 }
